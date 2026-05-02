@@ -5,6 +5,10 @@ on:
     branches:
       - main   # triggers on push to main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
