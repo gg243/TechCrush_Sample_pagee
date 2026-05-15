@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: techcrush-html-deployment
+  labels:
+    app: techcrush-html
+
+spec:
+  replicas: 2 # Run 2 identical pods for availability
+
+  selector:
+    matchLabels:
+      app: techcrush-html # Must match template.metadata.labels
+
+  template:
+    metadata:
+      labels:
+        app: techcrush-html
+
+    spec:
+      containers:
+        - name: techcrush-html
+          image: savadow/techcrush-html:latest
+          imagePullPolicy: Always # Always pull the latest image from Docker Hub
+
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+
+            limits:
+              memory: "128Mi"
+              cpu: "250m"

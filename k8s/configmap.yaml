@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: techcrush-html-config
+
+data:
+  APP_ENV: "production"
+  APP_NAME: "TechCrush-HTML"

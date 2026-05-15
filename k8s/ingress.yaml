@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: techcrush-html-ingress
+
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+
+spec:
+  rules:
+    - host: techcrush-html.local # Add "$(minikube ip) techcrush-html.local" to /etc/hosts
+
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+
+            backend:
+              service:
+                name: techcrush-html-service
+                port:
+                  number: 80
